@@ -22,3 +22,8 @@ Setup webhook in Twillio for phone number:
       Example: https://44a1dcb5.ngrok.io/voice/inbound
 
 Make a call in Google Hangouts for the US Number.
+
+# Sugested Documentation
+## Twilio
+- [Java Quick Start: Say a message](https://www.twilio.com/docs/quickstart/java/twiml/say-response#before-you-start)
+- [Java Quick Start: Connect call to second person](https://www.twilio.com/docs/quickstart/java/twiml/connect-call-to-second-person)
