@@ -23,9 +23,6 @@ public class IVR extends Response {
       case "2":
         response = dialAgent();
         break;
-      case "3":
-        response = redirectTo("/voice/suggestions");
-        break;
       default:
         response = redirectTo("/voice/inbound");
     }
