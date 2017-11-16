@@ -1,4 +1,4 @@
-# Created by https://www.gitignore.io/api/java,gradle,eclipse
+# Created by https://www.gitignore.io/com.mariadesk.api/java,gradle,eclipse
 
 ### Eclipse ###
 
@@ -8,6 +8,7 @@ tmp/
 *.tmp
 *.bak
 *.swp
+*.iml
 *~.nib
 local.properties
 .settings/
@@ -87,7 +88,7 @@ hs_err_pid*
 .gradle
 **/build/
 
-# Ignore Gradle GUI config
+# Ignore Gradle GUI com.mariadesk.config
 gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
@@ -99,4 +100,4 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-# End of https://www.gitignore.io/api/java,gradle,eclipse
+# End of https://www.gitignore.io/com.mariadesk.api/java,gradle,eclipse

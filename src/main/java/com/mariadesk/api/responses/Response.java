@@ -1,4 +1,4 @@
-package services;
+package com.mariadesk.api.responses;
 
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.Redirect;

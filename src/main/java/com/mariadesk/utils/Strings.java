@@ -1,4 +1,4 @@
-package services;
+package com.mariadesk.utils;
 
 public class Strings {
   public static final String GREETING = "Dear customer thanks for calling Maria real estate";

@@ -1,8 +1,9 @@
-package services;
+package com.mariadesk.api.responses;
 
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.Gather;
 import com.twilio.twiml.Say;
+import com.mariadesk.utils.Strings;
 
 
 public class Questions extends Response {

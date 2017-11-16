@@ -1,10 +1,9 @@
-package services;
+package com.mariadesk.api.responses;
 
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.Dial;
 import com.twilio.twiml.Number;
-
-import services.Config;
+import com.mariadesk.config.Config;
 
 public class IVR extends Response {
   private String digits;
