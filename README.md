@@ -9,9 +9,9 @@ Maria is a real estate entrepreneur and wants to improve Customer Support. She d
 - Purchase an United States Number in Twillo
 
 # Usage
-Launch webserver:
+Launch webserver with the desired Agent Number:
 
-    gradle bootRun
+    AGENT_NUMBER=+351900000000 gradle bootRun
 
 Create a tunnel:
 
