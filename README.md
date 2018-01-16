@@ -1,5 +1,5 @@
 # Call Center Challenge
-Maria is a real estate entrepreneur and wants to improve Customer Support. She decided to have a Call Center that automatically answers common questions and if the customer really needs help, it transfers the call to her number.
+Maria is an entrepreneur, owns a Flower Shop and wants to improve Customer Support. She decided to have a Call Center that automatically answers common questions and if the customer really needs help, it transfers the call to her number.
 
 # Setup
 - Install [Java](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
