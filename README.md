@@ -105,7 +105,7 @@ Intellij is shipped with Gradle support, so you'll just need to import the proje
       Example: https://44a1dcb5.ngrok.io/voice/inbound
 - Save the settings and make a test call.
 
-# Sugested Documentation
+# Suggested Documentation
 ## Heroku
 - [Deploying to Heroku](heroku.md)
 
