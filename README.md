@@ -7,9 +7,9 @@ For this challenge, you'll need to setup your environment with the following set
 - Install [Java 8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
 - Install [Gradle](https://gradle.org/install/)
 - Install [Ngrok](https://ngrok.com/)
-- Install [cURL](https://curl.haxx.se/download.html). This is optional but will help you testing the application HTTP endpoints without having to perform actual calls.
+- Install [cURL](https://curl.haxx.se/download.html). This is optional but will help you testing the application HTTP endpoints without having to perform actual calls. As an alternative, you can use a GUI based application such as [Postman](https://www.getpostman.com/) for the same effect.
 
-It's highly recommended that you use a Java IDE such as [Intellij IDEA](https://www.jetbrains.com/idea/download/download-thanks.html) or [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen2).
+It's highly recommended that you use a Java IDE such as [Intellij IDEA (Community)](https://www.jetbrains.com/idea/download/) or [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen2).
 
 ## Clone this Repository
 Once git is installed on your computer you may clone this repository,
@@ -70,6 +70,25 @@ The service is expected to respond with status code `200`.
 Finally, create a tunnel so that your local application can be accessed from the internet
 
     ngrok http 8080
+
+## IDE setup tips
+### Intellij
+Intellij is shipped with Gradle support, so you'll just need to import the project:
+- Go to "File" > "Import project" and select the project's base directory.
+- Mark "Import project from external model" and select "Gradle". If you need additional help, check the official [documentation](https://www.jetbrains.com/help/idea/gradle.html#gradle_import)
+- Keep the suggested settings and click "Finish".
+- All dependencies are resolved automatically.
+- You can boot the application directly from Intellij. In the "Gradle Projects" you'll find the *application > bootRun* task; if you double click it, the task runs and the application starts.
+
+  ![alt text](run_gradle_task_in_intellij.png)
+
+### Eclipse
+- Make sure you have [Buildship](http://www.vogella.com/tutorials/EclipseGradle/article.html#install-eclipse-gradle-buildship-tooling) plugins installed in Eclipse. If you've downloaded Eclipse recently this should be bundled already.
+- Import the project as described [here](http://www.vogella.com/tutorials/EclipseGradle/article.html#import-an-existing-gradle-project)
+- All dependencies are resolved automatically, so the project should present zero errors.
+- You can boot the application directly from Eclipse. In the "Gradle Tasks" view you'll find the *application > bootRun* task; if you double click it, the task runs and the application starts.
+
+  ![alt text](run_gradle_task_in_eclipse.png)
 
 ## Setup webhook in Twilio
 - In your twilio account, access the list of "Phone Numbers".
