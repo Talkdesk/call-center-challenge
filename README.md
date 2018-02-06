@@ -9,7 +9,7 @@ For this challenge, you'll need to setup your environment with the following set
 - Install [Ngrok](https://ngrok.com/)
 - Install [cURL](https://curl.haxx.se/download.html). This is optional but will help you testing the application HTTP endpoints without having to perform actual calls. As an alternative, you can use a GUI based application such as [Postman](https://www.getpostman.com/) for the same effect.
 
-It's highly recommended that you use a Java IDE such as [Intellij IDEA (Community)](https://www.jetbrains.com/idea/download/) or [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen2).
+It's highly recommended that you use a Java IDE such as [Intellij IDEA (Community)](https://www.jetbrains.com/idea/download/), [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen2), or [NetBeans (Java SE)](https://netbeans.org/downloads/).
 
 ## Clone this Repository
 Once git is installed on your computer you may clone this repository,
@@ -80,7 +80,7 @@ Intellij is shipped with Gradle support, so you'll just need to import the proje
 - All dependencies are resolved automatically.
 - You can boot the application directly from Intellij. In the "Gradle Projects" you'll find the *application > bootRun* task; if you double click it, the task runs and the application starts.
 
-  ![alt text](run_gradle_task_in_intellij.png)
+  ![Run bootRun task from IntelliJ](docs/images/run_gradle_task_in_intellij.png)
 
 ### Eclipse
 - Make sure you have [Buildship](http://www.vogella.com/tutorials/EclipseGradle/article.html#install-eclipse-gradle-buildship-tooling) plugins installed in Eclipse. If you've downloaded Eclipse recently this should be bundled already.
@@ -88,7 +88,15 @@ Intellij is shipped with Gradle support, so you'll just need to import the proje
 - All dependencies are resolved automatically, so the project should present zero errors.
 - You can boot the application directly from Eclipse. In the "Gradle Tasks" view you'll find the *application > bootRun* task; if you double click it, the task runs and the application starts.
 
-  ![alt text](run_gradle_task_in_eclipse.png)
+  ![Run bootRun task from Eclipse](docs/images/run_gradle_task_in_eclipse.png)
+
+### NetBeans
+- Install the [Gradle Support](http://plugins.netbeans.org/plugin/44510/gradle-support).
+- Select "Open Project" under "File" and import the directory where you cloned this repository to.
+- All dependencies are resolved automatically, so the project should present zero errors.
+- You can boot the application directly from NetBeans. Right click the project name and run the *bootRun* task.
+
+![Run bootRun task from NetBeans](docs/images/run_gradle_task_in_netbeans.png)
 
 ## Setup webhook in Twilio
 - In your twilio account, access the list of "Phone Numbers".
