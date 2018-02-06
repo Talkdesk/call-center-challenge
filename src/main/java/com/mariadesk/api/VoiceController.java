@@ -1,5 +1,6 @@
 package com.mariadesk.api;
 
+import com.mariadesk.api.responses.Inbound;
 import com.twilio.twiml.VoiceResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,7 @@ public class VoiceController {
                                @RequestParam("Caller") String caller,
                                @RequestParam("CallSid") String callId,
                                @RequestParam("AccountSid") String accountId) {
-    throw new UnsupportedOperationException("To be implemented");
+    return new Inbound().response();
   }
 
   @RequestMapping(path="/voice/ivr", produces="application/xml")
