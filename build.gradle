@@ -31,4 +31,5 @@ dependencies {
     compile('com.h2database:h2')
     compile('com.twilio.sdk:twilio:7.15.3')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('junit:junit:4.12')
 }
