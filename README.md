@@ -6,6 +6,7 @@ For this challenge, you'll need to setup your environment with the following set
 - Install [Git](https://git-scm.com/downloads)
 - Install [Java 8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
 - Install [Gradle](https://gradle.org/install/)
+- Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 - Install [Ngrok](https://ngrok.com/)
 - Install [cURL](https://curl.haxx.se/download.html). This is optional but will help you testing the application HTTP endpoints without having to perform actual calls. As an alternative, you can use a GUI based application such as [Postman](https://www.getpostman.com/) for the same effect.
 
