@@ -1,6 +1,5 @@
 package com.mariadesk.api.responses;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class IVRTest extends ResponseTest {
@@ -30,7 +29,7 @@ public class IVRTest extends ResponseTest {
     }
 
     public void assertIVRResponse(String digits, String expectedXML) {
-        IVR ivr = new IVR(digits);
+        IVR ivr = new IVR(digits, null);
         assertResponse(ivr, expectedXML);
     }
 

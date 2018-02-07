@@ -3,13 +3,14 @@ package com.mariadesk.api.responses;
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.Dial;
 import com.twilio.twiml.Number;
-import com.mariadesk.config.Config;
 
 public class IVR extends Response {
-  private String digits;
+  private final String digits;
+  private final String agentNumber;
 
-  public IVR(String digits) {
+  public IVR(String digits, String agentNumber) {
     this.digits = digits;
+    this.agentNumber = agentNumber;
   }
 
   public VoiceResponse response() {
@@ -30,7 +31,7 @@ public class IVR extends Response {
   }
 
   private VoiceResponse dialAgent() {
-    Number number = new Number.Builder(Config.AGENT_NUMBER).build();
+    Number number = new Number.Builder(agentNumber).build();
     return builder.dial(new Dial.Builder().number(number).build()).build();
   }
 }
