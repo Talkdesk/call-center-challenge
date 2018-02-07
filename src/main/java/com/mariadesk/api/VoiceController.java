@@ -2,6 +2,7 @@ package com.mariadesk.api;
 
 import com.mariadesk.models.Call;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,11 +16,14 @@ import com.mariadesk.repositories.CallsRepository;
 @RestController
 public class VoiceController {
 
-  private CallsRepository callsRepository;
+  private final CallsRepository callsRepository;
+  private final String agentNumber;
 
   @Autowired
-  public VoiceController(CallsRepository callsRepository){
+  public VoiceController(CallsRepository callsRepository,
+                         @Value("${agent.number}") String agentNumber) {
     this.callsRepository = callsRepository;
+    this.agentNumber = agentNumber;
   }
 
   @RequestMapping(path="/voice/inbound", produces="application/xml")
@@ -41,7 +45,7 @@ public class VoiceController {
 
   @RequestMapping(path="/voice/ivr", produces="application/xml")
   public VoiceResponse ivr(@RequestParam(value="Digits", defaultValue="") String digits) {
-    return new IVR(digits).response();
+    return new IVR(digits, agentNumber).response();
   }
 
   @RequestMapping(path="/voice/questions", produces="application/xml")
