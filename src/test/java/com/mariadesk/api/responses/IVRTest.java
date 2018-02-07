@@ -3,6 +3,7 @@ package com.mariadesk.api.responses;
 import org.junit.Test;
 
 public class IVRTest extends ResponseTest {
+    private String agentNumber = "+35191000000000";
 
     @Test
     public void testRedirectToQuestionsResponse() {
@@ -12,7 +13,7 @@ public class IVRTest extends ResponseTest {
 
     @Test
     public void testDialAgentResponse() {
-        String expectedXML = "<Response><Dial><Number/></Dial></Response>";
+        String expectedXML = "<Response><Dial><Number>" + agentNumber + "</Number></Dial></Response>";
         assertIVRResponse("2", expectedXML);
 
     }
@@ -29,7 +30,7 @@ public class IVRTest extends ResponseTest {
     }
 
     public void assertIVRResponse(String digits, String expectedXML) {
-        IVR ivr = new IVR(digits, null);
+        IVR ivr = new IVR(digits, agentNumber);
         assertResponse(ivr, expectedXML);
     }
 
