@@ -1,25 +1,26 @@
 package com.mariadesk.api.responses;
 
+import com.twilio.twiml.TwiMLException;
 import org.junit.Test;
 
 public class IVRTest extends ResponseTest {
     private String agentNumber = "+35191000000000";
 
     @Test
-    public void testRedirectToQuestionsResponse() {
+    public void testRedirectToQuestionsResponse() throws Exception {
         String expectedXML = "<Response><Redirect>/voice/questions</Redirect></Response>";
         assertIVRResponse("1", expectedXML);
     }
 
     @Test
-    public void testDialAgentResponse() {
+    public void testDialAgentResponse() throws Exception {
         String expectedXML = "<Response><Dial><Number>" + agentNumber + "</Number></Dial></Response>";
         assertIVRResponse("2", expectedXML);
 
     }
 
     @Test
-    public void testRedirectToInboundResponse() {
+    public void testRedirectToInboundResponse() throws Exception {
         String expectedXML = "<Response><Redirect>/voice/inbound</Redirect></Response>";
 
         String emptyDigits = "";
@@ -29,7 +30,7 @@ public class IVRTest extends ResponseTest {
         assertIVRResponse(outOfRangeDigit, expectedXML);
     }
 
-    public void assertIVRResponse(String digits, String expectedXML) {
+    public void assertIVRResponse(String digits, String expectedXML) throws TwiMLException {
         IVR ivr = new IVR(digits, agentNumber);
         assertResponse(ivr, expectedXML);
     }
