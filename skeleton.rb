@@ -1,4 +1,8 @@
+#!/usr/bin/env ruby
+
 require 'yaml'
+require 'optparse'
+require 'fileutils'
 
 class YMLConfig
   attr_reader :filters
@@ -13,14 +17,14 @@ class Skeleton
   attr_reader :output_dir
   attr_reader :ignored
 
-  def initialize(config)
+  def initialize(config, output_dir)
     @config = config
-    @output_dir = 'skeleton'
+    @output_dir = output_dir
     @ignored = %w[skeleton.rb skeleton.yml]
   end
 
   def build
-    remove_output_dir
+    clean_output_dir
 
     tree.each do |file|
       next if ignore?(file)
@@ -29,6 +33,8 @@ class Skeleton
       show_filter(file, output_path) if filters?(file)
       show_saved(output_path)
     end
+
+    puts "Build available in #{output_dir}"
   end
 
   private
@@ -82,14 +88,29 @@ class Skeleton
     ignored.include? file
   end
 
-  def remove_output_dir
-    `rm -rf #{output_dir}`
+  def clean_output_dir
+    Dir["#{output_dir}/*"].each do |node|
+      FileUtils.rmtree(node)
+      puts "Removed #{node}"
+    end
   end
 end
 
+def parse_options
+  options = {}
+
+  OptionParser.new do |opts|
+    opts.banner = 'Usage: skeleton.rb [options]'
+    opts.on('--output OUTPUT_DIR') { |o| options[:output] = o }
+  end.parse!
+
+  options
+end
+
 def main
+  options = parse_options
   config = YMLConfig.new('skeleton.yml')
-  skeleton = Skeleton.new(config)
+  skeleton = Skeleton.new(config, options.fetch(:output, 'skeleton'))
   skeleton.build
 end
 
