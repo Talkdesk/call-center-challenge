@@ -1,11 +1,12 @@
 package com.mariadesk.api.responses;
 
+import com.twilio.twiml.TwiMLException;
 import org.junit.Test;
 
 public class QuestionsTest extends ResponseTest {
 
     @Test
-    public void testQuestionsResponse() {
+    public void testQuestionsResponse() throws Exception {
         String expectedXML = "<Response><Gather numDigits=\"1\" action=\"/voice/questions\"><Say>For payments press 1,"
                            + " for orders press 2,for email support press 3</Say></Gather></Response>";
 
@@ -17,27 +18,28 @@ public class QuestionsTest extends ResponseTest {
     }
 
     @Test
-    public void testPaymentAnswerResponse() {
+    public void testPaymentAnswerResponse() throws Exception {
         String expectedXML = "<Response><Say>Use IBAN NL22ABNA0566397423 and send payment proofs to payments at "
                            + "mariaflowershop dot pt</Say></Response>";
         assertQuestionsResponse("1", expectedXML);
     }
 
     @Test
-    public void testOrdersAnswerResponse() {
+    public void testOrdersAnswerResponse() throws Exception {
         String expectedXML = "<Response><Say>Place your orders in our online shop at mariaflowershop dot pt</Say>"
                            + "</Response>";
         assertQuestionsResponse("2", expectedXML);
     }
 
     @Test
-    public void testSupportAnswerResponse() {
+    public void testSupportAnswerResponse() throws Exception {
         String expectedXML = "<Response><Say>When you need support, send an email to support at mariaflowershop dot "
                            + "pt</Say></Response>";
         assertQuestionsResponse("3", expectedXML);
     }
 
-    protected void assertQuestionsResponse(String digits, String expectedXML) {
+    protected void assertQuestionsResponse(String digits, String expectedXML)
+      throws TwiMLException {
         Questions questions = new Questions(digits);
         assertResponse(questions, expectedXML);
     }
