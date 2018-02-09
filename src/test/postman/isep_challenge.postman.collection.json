@@ -1,0 +1,461 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ISEP Challenge",
+		"_postman_id": "9652b89d-be95-21ed-5b03-dbd73b9e81c6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inbound Call",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Says the expected greeting\", function () {",
+							"    pm.expect(jsonObject.Response.Say).to.eql(\"Dear customer thanks for calling Maria Flower Shop\");",
+							"});",
+							"pm.test(\"Gathers with 1 digit and Presents the options to the caller\", function () {",
+							"    pm.expect(jsonObject.Response.Gather.$.numDigits).to.eql(\"1\");",
+							"    pm.expect(jsonObject.Response.Gather.$.action).to.eql(\"/voice/ivr\");",
+							"    pm.expect(jsonObject.Response.Gather.Say).to.eql(\"For questions press 1, to talk with an assistant press 2\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/inbound?To=123456789&From=987654321&Caller=JohnDoe&AccountSid=1&CallSid=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"inbound"
+					],
+					"query": [
+						{
+							"key": "To",
+							"value": "123456789",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "From",
+							"value": "987654321",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "Caller",
+							"value": "JohnDoe",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "AccountSid",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "CallSid",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Redirect to Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Redirect URL is the expected\", function () {",
+							"    pm.expect(jsonObject.Response.Redirect).to.eql(\"/voice/questions\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/ivr?Digits=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"ivr"
+					],
+					"query": [
+						{
+							"key": "Digits",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Dial Agent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"The Dial verb is sent\", function () {",
+							"    pm.expect(jsonObject.Response.Dial).to.be;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/ivr?Digits=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"ivr"
+					],
+					"query": [
+						{
+							"key": "Digits",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Redirect to the Beginning",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Redirect URL is the expected\", function () {",
+							"    pm.expect(jsonObject.Response.Redirect).to.eql(\"/voice/inbound\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/ivr?Digits=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"ivr"
+					],
+					"query": [
+						{
+							"key": "Digits",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prompt Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Gather one digit and set callback URL\", function () {",
+							"    pm.expect(jsonObject.Response.Gather.$.numDigits).to.eql(\"1\");",
+							"    pm.expect(jsonObject.Response.Gather.$.action).to.eql(\"/voice/questions\");",
+							"});",
+							"pm.test(\"Prompt the questions\", function() {",
+							"    pm.expect(jsonObject.Response.Gather.Say).to.eql(\"For payments press 1, for orders press 2,for email support press 3\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/voice/questions",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Answer to Payments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Answers to payments question\", function() {",
+							"    pm.expect(jsonObject.Response.Say).to.eql(\"Use IBAN NL22ABNA0566397423 and send payment proofs to payments at mariaflowershop dot pt\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/questions?Digits=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "Digits",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Answer to Orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Answers to payments question\", function() {",
+							"    pm.expect(jsonObject.Response.Say).to.eql(\"Place your orders in our online shop at mariaflowershop dot pt\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/questions?Digits=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "Digits",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Answer to Email Support",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Answers to payments question\", function() {",
+							"    pm.expect(jsonObject.Response.Say).to.eql(\"When you need support, send an email to support at mariaflowershop dot pt\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/voice/questions?Digits=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voice",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "Digits",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List Calls",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"The list of calls is not empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length > 0).to.be.true;",
+							"});",
+							"pm.test(\"The last call of the list has the expected properties\", function () {",
+							"    var schema = {",
+							"        \"type\": \"object\",",
+							"        \"required\": [\"accountId\", \"to\", \"from\", \"externalCallId\"]",
+							"    };",
+							"    var jsonData = pm.response.json();",
+							"    var lastCall = jsonData[jsonData.length - 1]",
+							"    ",
+							"    pm.expect(tv4.validate(lastCall, schema)).to.be.true;",
+							"",
+							"    pm.expect(lastCall.accountId).to.eql(\"123\");",
+							"    pm.expect(lastCall.externalCallId).to.eql(\"123\");",
+							"    pm.expect(lastCall.to).to.eql(\"912345678\");",
+							"    pm.expect(lastCall.from).to.eql(\"987654321\");",
+							"    ",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest(\"http://localhost:8080/voice/inbound?To=912345678&From=987654321&Caller=JohnDoe&CallSid=123&AccountSid=123\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/calls",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
