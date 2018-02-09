@@ -15,7 +15,7 @@ It's highly recommended that you use a Java IDE such as [Intellij IDEA (Communit
 ## Clone this Repository
 Once git is installed on your computer you may clone this repository,
 
-    git clone https://github.com/Talkdesk/call-center-challenge.git
+    git clone https://github.com/Talkdesk/call-center-challenge-skeleton.git
 
 and create a local branch for development.
 
