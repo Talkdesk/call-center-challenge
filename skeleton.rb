@@ -51,7 +51,7 @@ class Skeleton
   end
 
   def tree
-    `git ls-tree -r --name-only master`.split("\n")
+    `git ls-tree -r --name-only head`.split("\n")
   end
 
   def output(path)
