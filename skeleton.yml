@@ -5,3 +5,6 @@ src/main/java/com/mariadesk/api/responses/IVR.java:
 src/main/java/com/mariadesk/api/responses/Questions.java:
   - [17, 21]
   - [24, 46]
+
+src/main/java/com/mariadesk/api/CallsController.java:
+  - [15, 30]
