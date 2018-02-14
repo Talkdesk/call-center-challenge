@@ -30,7 +30,7 @@ to forward calls to your web application. The following steps will guide you int
 - [Sign up](https://www.twilio.com/try-twilio) for a trial account.
 - Let them know you're a human.
 - Name your project (e.g. Talkdesk Maria Call Center).
-- You're trial account is now set with a budget of $15.50.
+- Your trial account is now set with a budget of $15.50.
 
 ## Get a Number
 - Under Programmable Voice, choose Numbers.
