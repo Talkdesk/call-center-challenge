@@ -1,0 +1,4 @@
+# This is the default added code owner and should be changed or overridden.
+# This will be the default owner for everything in the repo, unless a
+# later match takes precedence
+* @Talkdesk/octo
